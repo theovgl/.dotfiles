@@ -11,6 +11,7 @@ A repo where I keep my dotfiles.
 # How to use
 
 ```sh
-	git clone https://github.com/theovgl/.dotfiles
+git clone https://github.com/theovgl/.dotfiles
+bash config.sh
 ```
 
