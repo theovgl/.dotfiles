@@ -19,7 +19,9 @@ call plug#begin()
 	Plug 'jiangmiao/auto-pairs'
 
 	" Completion and linters
-	Plug 'neoclide/coc.nvim',  {'branch': 'master', 'do': 'npm install'}
+	Plug 'neoclide/coc.nvim',  {'branch': 'release'}
 	Plug 'plasticboy/vim-markdown'
 
 call plug#end()
+
+source ./coc.vim
