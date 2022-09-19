@@ -4,6 +4,9 @@ set title
 set wildmenu
 set wildmode=longest:full,full
 set t_Co=256
+set autoindent
+set smarttab
+set tabstop=4
 
 filetype plugin indent on
 syntax on
@@ -24,4 +27,4 @@ call plug#begin()
 
 call plug#end()
 
-source ./coc.vim
+source ~/.config/nvim/coc.vim
