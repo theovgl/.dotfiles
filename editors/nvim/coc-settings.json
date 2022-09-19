@@ -1,9 +1,0 @@
-{
-	"clangd.enabled": true,
-	"clangd.arguments": [
-		"-Wextra",
-		"-Wall",
-		"-std=c++98"
-	],
-	"clangd.checkUpdates": true
-}
