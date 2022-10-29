@@ -21,6 +21,11 @@ function install_homebrew
 	fi
 	echo "⚙️  Installing applications using brew bundle..."
 	brew bundle
+	brew bundle check
+	if [$? -ne 0]
+		echo "ERROR: brew bundle failed to install one or more package(s)"
+		exit 1
+	fi
 }
 
 function macos_install
