@@ -9,7 +9,7 @@ git_path="$HOME/.gitconfig"
 zsh_folder="$(pwd)/terminal/zsh/.zshrc"
 zsh_path="$HOME/.zshrc"
 
-function install_homebrew ()
+function install_homebrew
 {
 	which -s brew
 	if [ $? -ne 0 ]
@@ -23,7 +23,7 @@ function install_homebrew ()
 	brew bundle
 }
 
-function macos_install ()
+function macos_install
 {
 	xcode-select -p 1>/dev/null
 	if [ $? -ne 0 ]
@@ -36,13 +36,13 @@ function macos_install ()
 	install_homebrew
 }
 
-function create_symlink ()
+function create_symlink
 {
 	echo "📝 Linking $3"
 	ln -sf $1 $2
 }
 
-function copy_dotfiles () 
+function copy_dotfiles
 {
 	create_symlink "$nvim_folder/init.vim" "$nvim_path/init.vim" "init.vim"
 	create_symlink "$nvim_folder/coc.vim" "$nvim_path/coc.vim" "coc.vim"
@@ -50,7 +50,7 @@ function copy_dotfiles ()
 	create_symlink "$zsh_folder" "$zsh_path" ".zshrc"
 }
 
-help()
+function help
 {
 	echo "Syntax: ./config.sh [-a|h]"
 	echo "options:"
