@@ -1,4 +1,4 @@
-[![macos-install](https://github.com/theovgl/.dotfiles/actions/workflows/macos_install.yml/badge.svg?branch=github-actions)](https://github.com/theovgl/.dotfiles/actions/workflows/macos_install.yml)
+[![macos-install](https://github.com/theovgl/.dotfiles/actions/workflows/macos_install.yml/badge.svg)](https://github.com/theovgl/.dotfiles/actions/workflows/macos_install.yml)
 # My Dotfiles
 A repo where I keep my dotfiles.
 
