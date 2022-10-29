@@ -1,33 +1,79 @@
-function install_homebrew () {
+# PATHS
+#	NVIM
+nvim_folder="$(pwd)/editors/nvim"
+nvim_path="$HOME/.config/nvim"
+#	GIT
+git_folder="$(pwd)/git/.gitconfig"
+git_path="$HOME/.gitconfig"
+#	ZSH
+zsh_folder="$(pwd)/terminal/zsh/.zshrc"
+zsh_path="$HOME/.zshrc"
+
+function install_homebrew ()
+{
 	which -s brew
 	if [ $? -ne 0 ]
 	then
 		echo "⚙️  Installing homebrew..."
 		ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	else	
+	else
 		echo "✅ Homebrew is already installed"
+	fi
 	echo "⚙️  Installing applications using brew bundle..."
 	brew bundle
-	fi
 }
 
-function macos_config () {
+function macos_install ()
+{
 	xcode-select -p 1>/dev/null
 	if [ $? -ne 0 ]
-	then	
+	then
 		echo "⚙️  Installing Command Line Tools..."
 		xcode-select --install
-	else	
+	else
 		echo "✅ Command Line Tools are already installed"
 	fi
+	install_homebrew
 }
 
-function main () {
-	if [[ $OSTYPE == 'darwin'* ]]
-	then
-		macos_config
-		install_homebrew
-	fi
+function create_symlink ()
+{
+	echo "📝 Linking $3"
+	ln -sf $1 $2
 }
 
-main
+function copy_dotfiles () 
+{
+	create_symlink "$nvim_folder/init.vim" "$nvim_path/init.vim" "init.vim"
+	create_symlink "$nvim_folder/coc.vim" "$nvim_path/coc.vim" "coc.vim"
+	create_symlink "$git_folder" "$git_path" ".gitconfig"
+	create_symlink "$zsh_folder" "$zsh_path" ".zshrc"
+}
+
+help()
+{
+	echo "Syntax: ./config.sh [-a|h]"
+	echo "options:"
+	echo "a	Install apps"
+	echo "h	Print this Help."
+}
+
+while getopts "ah" option
+do
+	case $option in
+		a)
+			if [[ $OSTYPE == 'darwin'* ]]
+			then
+				macos_install
+			fi
+			;;
+		h)
+			help
+			exit;;
+		\?)
+			help
+			exit;;
+	esac
+done
+copy_dotfiles
+exit 0;
