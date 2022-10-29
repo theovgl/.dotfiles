@@ -6,7 +6,6 @@ brew "ncdu"
 brew "neovim"
 brew "node"
 brew "readline"
-brew "valgrind"
 brew "zsh"
 
 # 'brew install cask'
