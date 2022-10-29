@@ -2,6 +2,8 @@
 tap "homebrew/cask"
 
 # brew install
+brew "docker-compose"
+brew "git"
 brew "ncdu"
 brew "neovim"
 brew "node"
@@ -15,7 +17,6 @@ cask "bitwarden"
 cask "brave-browser"
 cask "discord"
 cask "docker"
-cask "docker-compose"
 cask "iterm2"
 cask "visual-studio-code"
 cask "vlc"
