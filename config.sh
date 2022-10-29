@@ -9,6 +9,8 @@ git_path="$HOME/.gitconfig"
 zsh_folder="$(pwd)/terminal/zsh/.zshrc"
 zsh_path="$HOME/.zshrc"
 
+return_value=0
+
 function install_homebrew
 {
 	which -s brew
@@ -21,6 +23,12 @@ function install_homebrew
 	fi
 	echo "⚙️  Installing applications using brew bundle..."
 	brew bundle
+	brew bundle check > /dev/null
+	if [ $? -ne 0 ]
+	then
+		echo "\033[0;31mERROR: brew bundle failed to install one or more package(s)\033[0m"
+		return_value=1
+	fi
 }
 
 function macos_install
@@ -55,8 +63,8 @@ function help
 {
 	echo "Syntax: ./config.sh [-a|h]"
 	echo "options:"
-	echo "a	Install apps"
-	echo "h	Print this Help."
+	echo " -a Install apps"
+	echo " -h Print this Help."
 }
 
 while getopts "ah" option
@@ -73,8 +81,8 @@ do
 			exit;;
 		\?)
 			help
-			exit;;
+			exit 1;;
 	esac
 done
 copy_dotfiles
-exit 0;
+exit $return_value;
