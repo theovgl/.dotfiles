@@ -44,6 +44,7 @@ function create_symlink
 
 function copy_dotfiles
 {
+	mkdir -p "$nvim_path"
 	create_symlink "$nvim_folder/init.vim" "$nvim_path/init.vim" "init.vim"
 	create_symlink "$nvim_folder/coc.vim" "$nvim_path/coc.vim" "coc.vim"
 	create_symlink "$git_folder" "$git_path" ".gitconfig"
