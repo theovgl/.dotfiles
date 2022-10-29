@@ -23,6 +23,7 @@ function install_homebrew
 	brew bundle
 	brew bundle check
 	if [$? -ne 0]
+	then
 		echo "ERROR: brew bundle failed to install one or more package(s)"
 		exit 1
 	fi
