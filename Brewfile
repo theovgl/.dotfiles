@@ -1,5 +1,6 @@
 # 'brew tap'
 tap "homebrew/cask"
+tap "homebrew/cask-fonts"
 
 # brew install
 brew "docker-compose"
@@ -17,6 +18,7 @@ cask "bitwarden"
 cask "brave-browser"
 cask "discord"
 cask "docker"
+cask "font-fira-code"
 cask "iterm2"
 cask "vagrant"
 cask "virtualbox"
