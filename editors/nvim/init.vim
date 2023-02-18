@@ -6,6 +6,8 @@ set wildmode=longest:full,full
 set t_Co=256
 set autoindent
 set smarttab
+set noexpandtab
+set shiftwidth=4
 set tabstop=4
 set list
 set listchars+=space:·
@@ -30,12 +32,13 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin()
 	" Appearance
 	Plug 'vim-airline/vim-airline'
+	Plug 'nvim-treesitter/nvim-treesitter'
 	
 	" Theme
 	Plug 'jaredgorski/spacecamp'
 
 	" Utilities
-	Plug 'sheerun/vim-polyglot'
+	Plug 'chrisbra/vim-commentary'
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'airblade/vim-gitgutter'
 
@@ -47,4 +50,5 @@ call plug#end()
 
 colorscheme spacecamp
 
+source ~/.config/nvim/plug-config/tree-sitter.vim
 source ~/.config/nvim/coc.vim
